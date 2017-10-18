@@ -1,4 +1,6 @@
-class ItemsController < ApplicationController
+class Api::ItemsController < ApiController
+  before_action :authenticated?
+  
   def create
     @item = Item.new(item_params)
     @item.list_id = List.find(params[:id])

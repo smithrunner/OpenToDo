@@ -1,4 +1,6 @@
-class ListsController < ApplicationController
+class Api::ListsController < ApiController
+  before_action :authenticated?
+  
   def create
     @list = List.new(list_params)
     @list.user_id = User.find(params[:id])
